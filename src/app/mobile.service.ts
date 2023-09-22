@@ -11,7 +11,8 @@ export class MobileService {
   url="https://localhost:7105/api/MobileDetails"
 
   fetchMobiles(){
-   return this.http.get(this.url)
+    
+   return this.http.get(this.url);
   }
 }
   
