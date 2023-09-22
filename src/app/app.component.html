@@ -1,0 +1,27 @@
+<div *ngIf="MobileDetails">
+  <div>Manage Mobiles
+  <button class="btn">Add Mobiles</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>MobileName</th>
+        <th>Price</th>
+        <th>RAM</th>
+        <th>Storage</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let mobile of MobileDetails">
+        <td>{{mobile['id']}}</td>
+        <td>{{mobile['mobileName']}}</td>
+        <td>{{mobile['price']}}</td>
+        <td>{{mobile['ram']}}</td>
+        <td>{{mobile['storage']}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
