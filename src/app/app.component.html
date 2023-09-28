@@ -1,6 +1,6 @@
-<div *ngIf="MobileDetails">
+<div *ngIf="MobileDetails;else err">
   <div>Manage Mobiles
-  <button class="btn">Add Mobiles</button>
+    <button class="btn" (click)="openForm()">Add Mobile</button>
   </div>
   <table>
     <thead>
@@ -10,6 +10,8 @@
         <th>Price</th>
         <th>RAM</th>
         <th>Storage</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -19,9 +21,44 @@
         <td>{{mobile['price']}}</td>
         <td>{{mobile['ram']}}</td>
         <td>{{mobile['storage']}}</td>
+        <td><button class="btn" (click)="openForm(mobile)">Edit</button></td>
+        <td><button class="btn" (click)="deleteMobile(mobile['id'])">Delete</button></td>
       </tr>
     </tbody>
   </table>
+</div>
+<ng-template  #err>
+  <p>error fetching data</p>
+</ng-template>
+
+<div *ngIf="showForm">
+  <div class="mobileForm">
+    <h2>{{formHeader}}</h2>
+    <div *ngIf="id>0">
+      <label for="">Id:</label>
+      <input type="number" class="formControl" [(ngModel)]="id" name="id">
+    </div>
+    <div>
+      <label for="">MobileName:</label>
+      <input type="string" class="formControl" [(ngModel)]="mobileName" name="mobileName">
+    </div>
+    <div>
+      <label for="">Price:</label>
+      <input type="number" class="formControl" [(ngModel)]="price" name="price">
+    </div>
+    <div>
+      <label for="">Ram:</label>
+      <input type="number" class="formControl" [(ngModel)]="ram" name="ram">
+    </div>
+    <div>
+      <label for="">Storage:</label>
+      <input type="number" class="formControl" [(ngModel)]="storage" name="storage">
+    </div>
+    <div class="action">
+       <button class="btn save" (click)="saveMobile()">Save</button>
+       <button class="btn cancel" (click)="closeForm()">Cancel</button>
+    </div>
+  </div>
 </div>
 
 
